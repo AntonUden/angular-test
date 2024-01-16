@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import PVEStatus from '../core/interfaces/PVEStatus';
+import PVEStatus from '../../interfaces/PVEStatus';
 
 @Injectable({
   providedIn: 'root',

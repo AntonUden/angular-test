@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import PVEStatus from '../../../core/interfaces/PVEStatus';
-import { PVEDataFetcherService } from '../../../data/pvedata-fetcher.service';
+import { PVEDataFetcherService } from '../../../core/api/pvedata/pvedata-fetcher.service';
 import { catchError } from 'rxjs';
 
 @Component({
