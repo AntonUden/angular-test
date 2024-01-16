@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">
+      <span class="me-2">{{node.name}}</span>
+      @if(node.online) {
+      <span class="badge bg-success">Online</span>
+      } @else {
+      <span class="badge bg-danger">Offline</span>
+      }
+    </h5>
+
+    <div class="card-text">
+      <div>
+        <div>CPU</div>
+        <server-cpu-bar [load]="node.cpu.usage" [offline]="!node.online" />
+      </div>
+
+      <div class="mt-2">
+        <div>Ram</div>
+        <server-memory-bar [storageComponent]="node.memory" [offline]="!node.online" />
+      </div>
+
+      <div class="mt-2">
+        <div>Storage</div>
+        <server-memory-bar [storageComponent]="node.disk" [offline]="!node.online" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="row mt-2">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">
+                  Status for {{pveStatsURL}}
+                </h2>
+
+                <div class="card-text">
+                  @if(errorState) {
+                  <!-- Server error message -->
+                  <div class="row mt-2">
+                    <div class="col">
+                      <div class="alert alert-danger" role="alert">An error occured while fetching stats</div>
+                    </div>
+                  </div>
+                  } @else {
+
+                  @if(status == null) {
+                  <!-- Fetching data message -->
+                  <div class="alert alert-info" role="alert">
+                    Fetching data...
+                  </div>
+                  } @else {
+                  <!-- Cluster stats -->
+                  <div class="mt-2">
+                    <h5>Cluster stats:</h5>
+                    <div class="mt-2">
+                      <div>CPU (Global)</div>
+
+                      <server-cpu-bar [load]="calcCPUAvg()" />
+                    </div>
+
+                    <div class="mt-2">
+                      <div>Ram (Global)</div>
+                      <server-memory-bar [storageComponent]="status.total.memory" />
+                    </div>
+
+                    <div class="mt-2">
+                      <div>Storage (Global)</div>
+                      <server-memory-bar [storageComponent]="status.total.disk" />
+                    </div>
+                  </div>
+
+                  <!-- Nodes -->
+                  <div class="mt-2">
+                    <h5>Nodes:</h5>
+                    <!-- Node list -->
+                    @for (node of status.nodes; track node.name) {
+                    <div class="row mb-2">
+                      <div class="col">
+                        <server-node-status-cards [node]="node" />
+                      </div>
+                    </div>
+                    }
+                  </div>
+                  }
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

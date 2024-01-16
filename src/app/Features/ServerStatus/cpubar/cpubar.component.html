@@ -1,0 +1,6 @@
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [style.width.%]="getUsage()" [style.max-width.%]="getUsage()"
+    [attr.aria-valuenow]="getUsage()" aria-valuemin="0" aria-valuemax="100">
+    {{getText()}}
+  </div>
+</div>
